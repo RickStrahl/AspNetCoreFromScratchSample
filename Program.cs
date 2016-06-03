@@ -35,7 +35,7 @@ namespace ConsoleApplication
     }
 
 
-    public class HelloWorldController
+    public class HelloWorldController : Controller
     {
         [HttpGet("api/helloworld")]
         public object HelloWorld()
@@ -46,5 +46,6 @@ namespace ConsoleApplication
                 time = DateTime.Now
             };
         }
+
     }
 }
