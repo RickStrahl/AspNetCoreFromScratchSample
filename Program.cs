@@ -13,21 +13,21 @@ namespace ConsoleApplication
 {
     public class Program
     {
-        public static void Main(string[] args)
-        {
-            var host = new WebHostBuilder()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseKestrel()
-                .UseStartup<Startup>()                
-                .Build();
+public static void Main(string[] args)
+{
+    var host = new WebHostBuilder()
+        .UseContentRoot(Directory.GetCurrentDirectory())
+        .UseKestrel()
+        .UseStartup<Startup>()                
+        .Build();
 
-            host.Run();
-        }
+    host.Run();
+}
     }
 
     public class Startup
     {
-        
+
         public Startup(IHostingEnvironment env)
         {
         }
@@ -39,16 +39,10 @@ namespace ConsoleApplication
 
         public void Configure(IApplicationBuilder app)
         {
-            
             app.UseDeveloperExceptionPage();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
-            
+            app.UseMvc();
+
             // this becomes the last handler in the chain
             app.Run(async (context) =>
             {
@@ -58,7 +52,6 @@ namespace ConsoleApplication
             });
         }
     }
-
 
 
     public class HelloworldController : Controller
@@ -79,14 +72,14 @@ namespace ConsoleApplication
             };
         }
 
-        [HttpGet("goodbye")]
-        public ActionResult Goodbye()
+        [HttpGet("helloworld")]
+        public ActionResult HelloworldMvc()
         {
             ViewBag.Message = "Hello world!";
             ViewBag.Time = DateTime.Now;
 
-            return View();
-            //return View("~/helloworld/goodbye.cshtml");  // exists!
+            return View("helloworld");
+            //return View("~/helloworld.cshtml");  // from root folder            
         }
     }
 }
