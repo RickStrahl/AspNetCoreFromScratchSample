@@ -13,16 +13,16 @@ namespace ConsoleApplication
 {
     public class Program
     {
-public static void Main(string[] args)
-{
-    var host = new WebHostBuilder()
-        .UseContentRoot(Directory.GetCurrentDirectory())
-        .UseKestrel()
-        .UseStartup<Startup>()                
-        .Build();
+        public static void Main(string[] args)
+        {
+            var host = new WebHostBuilder()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseKestrel()
+                .UseStartup<Startup>()
+                .Build();
 
-    host.Run();
-}
+            host.Run();
+        }
     }
 
     public class Startup
@@ -48,7 +48,7 @@ public static void Main(string[] args)
             {
                 await context.Response.WriteAsync(
                     "Hello World. The Time is: " +
-                    DateTime.Now);
+                    DateTime.Now + " (App.Run() fallback handler)");
             });
         }
     }
