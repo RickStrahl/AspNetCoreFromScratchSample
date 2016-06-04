@@ -47,3 +47,5 @@ publishprofile.xml
 .vs/config/applicationhost.config
 AlbumViewer.publishsettings
 *.sqlite
+project.lock.json
+project.lock.json
